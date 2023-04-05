@@ -1,4 +1,4 @@
-name: Office Document Creating Schedule Task
+name: Office Document Creating Scheduled Task
 id: cc8b7b74-9d0f-11eb-8342-acde48001122
 version: 4
 date: '2023-02-15'
@@ -6,10 +6,10 @@ author: Teoderick Contreras, Splunk
 type: TTP
 datamodel:
 - Endpoint
-description: this search detects a potential malicious office document that create
-  schedule task entry through macro VBA api or through loading taskschd.dll. This
-  technique was seen in so many malicious macro malware that create persistence ,
-  beaconing using task schedule malware entry The search will return the first time
+description: This search detects a potential malicious office document that creates a
+  scheduled task entry through macro VBA api or through loading taskschd.dll. This
+  technique was seen in so many malicious macro malware that create persistence,
+  beaconing using scheduled tasks. The search will return the first time
   and last time the task was registered, as well as the `Command` to be executed,
   `Task Name`, `Author`, `Enabled`, and whether it is `Hidden` or not. schtasks.exe
   is natively found in `C:\Windows\system32` and `C:\Windows\syswow64`. The following
@@ -45,12 +45,12 @@ tags:
   impact: 70
   kill_chain_phases:
   - Exploitation
-  message: Office document creating a schedule task on $dest$
+  message: Office document creating a scheduled task on $Computer$
   mitre_attack_id:
   - T1566
   - T1566.001
   observable:
-  - name: dest
+  - name: Computer
     type: Endpoint
     role:
     - Victim
